@@ -1,14 +1,20 @@
-
-const Form = ({ setInputText }) => {
+const Form = ({ setInputText, inputText, todos, setTodos }) => {
   const inputTextHandler = (event) => {
-    console.log(event.target.value);
     setInputText(event.target.value)
+  }
+
+  const submitTodo = (event) => {
+    event.preventDefault()
+    setTodos([
+      ...todos, {text: inputText, completed: false, id: 'id' + Date.parse(new Date()).toString()}
+    ])
+    setInputText('')
   }
 
   return (
     <form>
-      <input onChange={inputTextHandler} type="text" className="todo-input" />
-      <button className="todo-button" type="submit">
+      <input onChange={inputTextHandler} type="text" className="todo-input" value={inputText}/>
+      <button onClick={submitTodo} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
