@@ -1,17 +1,18 @@
-import Todos from './Todos'
-
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todoList, setTodoList }) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {todos.map(todo => (
-          <Todos
-            key={todo.id}
-            text={todo.text}
-            setTodos={setTodos}
-            todos={todos}
-            todo={todo}
-          />
+        {todoList.map(singleTodo => (
+          <div key={singleTodo.id} className="todo">
+            <li className="todo-text">{singleTodo.todoText}</li>
+            <button className="complete-button">
+              <i className="fas fa-check"></i>
+            </button>
+            <button className="edit-button"><i class="fa fa-edit"></i></button>
+            <button className="trash-button">
+              <i className="fas fa-trash"></i>
+            </button>
+          </div>
         ))}
       </ul>
     </div>
