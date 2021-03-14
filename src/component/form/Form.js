@@ -1,30 +1,38 @@
-const Form = ({ setInputText, inputText, todos, setTodos }) => {
-  const inputTextHandler = (event) => {
-    setInputText(event.target.value)
-  }
-
-  const submitTodo = (event) => {
+const Form = ({ todoList, setTodoList }) => {
+  const addTodo = (event) => {
     event.preventDefault()
-    setTodos([
-      ...todos, {text: inputText, completed: false, id: 'id' + Date.parse(new Date()).toString()}
-    ])
-    setInputText('')
+    const todoText = document.querySelector('.todo-input').value
+    if (todoText.trim().length >= 1) {
+      const id = 'id' + Date.parse(new Date()).toString()
+      const todoObject = {
+        id,
+        todoText,
+        completed: false
+      }
+
+      setTodoList([...todoList, todoObject])
+      document.querySelector('.todo-input').value = ''
+      document.querySelector('#inputMessage').style.display = 'none'
+    } else {
+      document.querySelector('#inputMessage').style.display = 'block'
+    }
   }
 
   return (
-    <form>
-      <input onChange={inputTextHandler} type="text" className="todo-input" value={inputText}/>
-      <button onClick={submitTodo} className="todo-button" type="submit">
-        <i className="fas fa-plus-square"></i>
-      </button>
-      <div className="select">
-        <select name="todos" className="filter-todo">
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
-        </select>
-      </div>
-    </form>
+    <>
+      <form onSubmit={(event) => addTodo(event)}>
+        <input type="text" className="todo-input" autoFocus required/>
+        <button type="submit"><i className="fas fa-plus-square"></i></button>
+        <div className="select">
+          <select name="todoList" className="filter-todo">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="uncompleted">Uncompleted</option>
+          </select>
+        </div>
+      </form>
+      <p id="inputMessage">"This field cannot be left blank"</p>
+    </>
   )
 }
 
