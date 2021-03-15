@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
   color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
@@ -68,6 +68,10 @@ form button:hover {
 
 .todo li {
   flex: 1;
+}
+
+button:active {
+  transform: translateY(0.1rem);
 }
 
 .trash-button,
@@ -176,4 +180,41 @@ form button:hover {
 
 #deleteButton {
   background: #0bd4a2;
+}
+
+.edit-modal {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  color: #000;
+  width: 30rem;
+  height: 15rem;
+  font-size: 1.4rem;
+  padding: 1em;
+}
+
+.edit-modal input {
+  border: 0.1rem solid #000;
+  background: #ff6f47de;
+}
+
+.edit-modal > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-modal > div button {
+  color: #ff6f47;
+  border: none;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+}
+
+.edit-modal p {
+  flex: 0.8;
 }
