@@ -1,4 +1,7 @@
+import { useState } from "react"
+
 const Form = ({ todoList, setTodoList }) => {
+  const [filteredTodos, setFilteredTodos] = useState([])
   const addTodo = (event) => {
     event.preventDefault()
     const todoText = document.querySelector('.todo-input').value
@@ -18,13 +21,32 @@ const Form = ({ todoList, setTodoList }) => {
     }
   }
 
+  const filterTodoList = (event) => {
+    const selectValue = event.target.value
+    switch (selectValue) {
+      case 'completed':
+        setFilteredTodos(todoList.filter((todoItem) => {
+          return todoItem.completed === true
+        }))
+        break;
+      case 'uncompleted':
+        console.log('nok');
+        break;
+      default:
+
+        break
+    }
+  }
+
   return (
     <>
       <form onSubmit={(event) => addTodo(event)}>
         <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
         <button type="submit"><i className="fas fa-plus-square"></i></button>
         <div className="select">
-          <select name="todoList" className="filter-todo">
+          <select
+            onChange={(event) => filterTodoList(event)} name="todoList" className="filter-todo"
+          >
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
