@@ -106,7 +106,6 @@ form button:hover {
 
 .completed {
   text-decoration: line-through;
-  opacity: 0.5;
 }
 
 .filter-todo {
@@ -139,4 +138,42 @@ form button:hover {
   background: #ff6f47;
   cursor: pointer;
   pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #99999981;
+}
+
+.delete-modal {
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  color: #000;
+  width: 25rem;
+  height: 10rem;
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 1em;
+}
+
+.delete-modal button {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin: auto 1em;
+  border-radius: 0.3rem;
+  font-weight: 600;
+}
+
+#deleteButton {
+  background: #0bd4a2;
 }
