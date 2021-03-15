@@ -21,7 +21,7 @@ const Form = ({ todoList, setTodoList }) => {
   return (
     <>
       <form onSubmit={(event) => addTodo(event)}>
-        <input type="text" className="todo-input" autoFocus required/>
+        <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
         <button type="submit"><i className="fas fa-plus-square"></i></button>
         <div className="select">
           <select name="todoList" className="filter-todo">
