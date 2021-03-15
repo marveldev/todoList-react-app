@@ -2,7 +2,8 @@ import { useState } from "react"
 
 const TodoList = ({ todoList, setTodoList }) => {
   const [deleteModal, setDeleteModal] = useState({isActive: false, todoId: ''})
-  const markAsComplete = (elementId) => {
+  const [editModal, setEditModal] = useState({isActive: false, todoText:'', todoId: ''})
+  const markAsComplete = elementId => {
     setTodoList(
       todoList.map((todoItem) => {
         if (todoItem.id === elementId) {
@@ -13,7 +14,21 @@ const TodoList = ({ todoList, setTodoList }) => {
     )
   }
 
-  const deleteTodo = (todoId) => {
+  const editTodo = (event, todoId) => {
+    event.preventDefault()
+    const newTodoInput = document.querySelector('.new-todo-input').value
+    setTodoList(
+      todoList.map((todoItem) => {
+        if (todoItem.id === todoId) {
+          return {...todoItem, todoText: newTodoInput}
+        }
+        return todoItem
+      })
+    )
+    setEditModal(false)
+  }
+
+  const deleteTodo = todoId => {
     setTodoList(
       todoList.filter((todoItem) => {
         return todoItem.id !== todoId
@@ -35,6 +50,26 @@ const TodoList = ({ todoList, setTodoList }) => {
     )
   }
 
+  const EditModal = ({ todoId, todoText }) => {
+    return (
+      <>
+        <div onClick={() => setEditModal(false)} className="overlay"></div>
+        <div className="edit-modal">
+          <div>
+            <button onClick={() => setEditModal(false)}>
+              <i className="material-icons">&#xe5cd;</i>
+            </button>
+            <p>Enter new Todo</p>
+          </div>
+          <form onSubmit={(event) => editTodo(event, todoId)}>
+            <input type="text" className="new-todo-input" defaultValue={todoText} autoFocus required/>
+            <button type="submit"><i className="fas fa-plus-square"></i></button>
+          </form>
+        </div>
+      </>
+    )
+  }
+
   return (
     <div className="todo-container">
       <div className="todo-list">
@@ -48,7 +83,14 @@ const TodoList = ({ todoList, setTodoList }) => {
             <button onClick={() => markAsComplete(singleTodo.id)} className="complete-button">
               <i className="fas fa-check"></i>
             </button>
-            <button className="edit-button"><i className="fa fa-edit"></i></button>
+            <button
+              onClick={() => setEditModal(
+                {isActive: true, todoText: singleTodo.todoText, todoId: singleTodo.id}
+              )}
+              className="edit-button"
+            >
+              <i className="fa fa-edit"></i>
+            </button>
             <button
               onClick={() => setDeleteModal({isActive: true, todoId: singleTodo.id})}
               className="trash-button"
@@ -58,6 +100,12 @@ const TodoList = ({ todoList, setTodoList }) => {
           </div>
         ))}
       </div>
+      {editModal.isActive &&
+        <EditModal
+          todoText={editModal.todoText}
+          todoId={editModal.todoId}
+        />
+      }
       {deleteModal.isActive &&
         <DeleteModal
           todoId={deleteModal.todoId}
