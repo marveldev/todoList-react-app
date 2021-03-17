@@ -21,20 +21,18 @@ const Form = ({ todoList, setTodoList }) => {
     }
   }
 
-  const filterTodoList = (event) => {
-    const selectValue = event.target.value
-    switch (selectValue) {
-      case 'completed':
-        setFilteredTodos(todoList.filter((todoItem) => {
-          return todoItem.completed === true
-        }))
-        break;
-      case 'uncompleted':
-        console.log('nok');
-        break;
-      default:
-
-        break
+  const filterTodoList = event => {
+    const selectedValue = event.target.value
+    if (selectedValue === 'completed') {
+      const nextState = filteredTodos.filter(todoItem => todoItem.completed)
+      setTodoList(nextState)
+    }
+    else if (selectedValue === 'uncompleted') {
+      const nextState = filteredTodos.filter(todoItem => !todoItem.completed)
+      setTodoList(nextState)
+    }
+    else {
+      setTodoList(filteredTodos)
     }
   }
 
