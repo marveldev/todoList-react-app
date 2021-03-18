@@ -1,13 +1,15 @@
 import { useState } from "react"
 
-const TodoList = ({ todoList, setTodoList }) => {
+const TodoList = ({ todoList, setTodoList, filterParam }) => {
   const [deleteModal, setDeleteModal] = useState({isActive: false, todoId: ''})
   const [editModal, setEditModal] = useState({isActive: false, todoText:'', todoId: ''})
+
   const markAsComplete = elementId => {
     setTodoList(
       todoList.map((todoItem) => {
+        const status = todoItem.status === 'completed' ? 'uncompleted' : 'completed'
         if (todoItem.id === elementId) {
-          return {...todoItem, completed: !todoItem.completed}
+          return { ...todoItem, status }
         }
         return todoItem
       })
@@ -70,13 +72,17 @@ const TodoList = ({ todoList, setTodoList }) => {
     )
   }
 
+  const filteredItems = filterParam === 'all'
+    ? todoList
+    : todoList.filter(item => item.status === filterParam)
+
   return (
     <div className="todo-container">
       <div className="todo-list">
-        {todoList.map(singleTodo => (
+        {filteredItems.map(singleTodo => (
           <div key={singleTodo.id} className="todo">
             <li
-              className={`todo-text ${singleTodo.completed === true ? 'completed' : ''}`}
+              className={`todo-text ${singleTodo.status === 'completed' && 'completed'}`}
             >
               {singleTodo.todoText}
               </li>
