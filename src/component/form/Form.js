@@ -23,8 +23,10 @@ const Form = ({ todoList, setTodoList, setFilterParam }) => {
   return (
     <>
       <form onSubmit={(event) => addTodo(event)}>
-        <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
-        <button type="submit"><i className="fas fa-plus-square"></i></button>
+        <div>
+          <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
+          <button type="submit"><i className="fas fa-plus-square"></i></button>
+        </div>
         <div className="select">
           <select
             onChange={(event) => {setFilterParam(event.target.value)}}

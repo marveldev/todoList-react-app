@@ -13,11 +13,11 @@ body {
 
 h1 {
   font-size: 2rem;
+  text-align: center;
+  margin: 2em;
 }
 
-h1,
 form {
-  min-height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ form button:hover {
   font-size: 1.5rem;
   color: black;
   display: flex;
-  width: 20em;
+  width: 20rem;
   justify-content: space-between;
   align-items: center;
   transition: all 1s ease;
@@ -118,19 +118,16 @@ button:active {
   outline: 0;
   box-shadow: none;
   background-image: none;
+  color: #ff6f47;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 12rem;
 }
 
 .select {
   margin: 1rem;
   position: relative;
   overflow: hidden;
-}
-
-.filter-todo {
-  color: #ff6f47;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  width: 12rem;
 }
 
 .select::after {
@@ -182,6 +179,10 @@ button:active {
   background: #0bd4a2;
 }
 
+.edit-modal form {
+  margin-top: 1.5em;
+}
+
 .edit-modal {
   position: absolute;
   z-index: 1;
@@ -217,4 +218,85 @@ button:active {
 
 .edit-modal p {
   flex: 0.8;
+}
+
+@media screen and (max-width: 680px) {
+  form {
+    flex-direction: column-reverse;
+  }
+
+  .select {
+    margin: 0 0 2rem 15rem;
+  }
+
+  .todo-container {
+    margin-top: 1em;
+  }
+
+  .edit-modal form {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .select {
+    position: relative;
+    right: 0;
+  }
+
+  .todo {
+    font-size: 1.5rem;
+    width: 25rem;
+  }
+
+  .edit-modal {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .select {
+    position: relative;
+    right: 1rem;
+  }
+
+  form input,
+  form button {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .select {
+    position: relative;
+    right: 2rem;
+  }
+
+  form input,
+  form button {
+    font-size: 1.5rem;
+  }
+
+  .todo {
+    font-size: 1.3rem;
+    width: 21rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .select {
+    position: relative;
+    right: 4rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  form input,
+  form button {
+    font-size: 1.3rem;
+  }
+
+  .todo {
+    width: 18rem;
+  }
 }
