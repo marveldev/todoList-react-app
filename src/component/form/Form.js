@@ -1,17 +1,17 @@
-const Form = ({ todoList, setTodoList, setFilterParam }) => {
-  const addTodo = (event) => {
+import datastore from '../../dataStore'
+
+const Form = ({ setFilterParam }) => {
+  const addTodo = async event => {
     event.preventDefault()
     const todoText = document.querySelector('.todo-input').value
 
     if (todoText.trim().length >= 1) {
-      const id = 'id' + Date.parse(new Date()).toString()
       const todoObject = {
-        id,
         todoText,
         status: 'uncompleted'
       }
 
-      setTodoList([...todoList, todoObject])
+      await datastore.todos.add(todoObject)
 
       document.querySelector('.todo-input').value = ''
       document.querySelector('#inputMessage').style.display = 'none'
@@ -22,14 +22,14 @@ const Form = ({ todoList, setTodoList, setFilterParam }) => {
 
   return (
     <>
-      <form onSubmit={(event) => addTodo(event)}>
+      <form onSubmit={addTodo}>
         <div>
           <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
           <button type="submit"><i className="fas fa-plus-square"></i></button>
         </div>
         <div className="select">
           <select
-            onChange={(event) => {setFilterParam(event.target.value)}}
+            onChange={(event) => setFilterParam(event.target.value)}
             name="todoList"
             className="filter-todo"
           >
@@ -39,7 +39,7 @@ const Form = ({ todoList, setTodoList, setFilterParam }) => {
           </select>
         </div>
       </form>
-      <p id="inputMessage">"This field cannot be left blank"</p>
+      <p id="inputMessage">"Blank field cannot be added"</p>
     </>
   )
 }
