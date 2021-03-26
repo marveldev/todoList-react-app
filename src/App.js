@@ -5,8 +5,9 @@ import { Form, TodoList } from './component'
 import './index.css'
 
 const App = () => {
-  const allTodos = useLiveQuery(() => datastore.todos.toArray(), [])
   const [filterParam, setFilterParam] = useState('all')
+  const allTodos = useLiveQuery(() => datastore.todos.toArray(), [])
+  if (!allTodos) return null
 
   return (
     <div>
