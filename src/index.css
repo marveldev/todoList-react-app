@@ -220,13 +220,13 @@ button:active {
   flex: 0.8;
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 765px) {
   form {
     flex-direction: column-reverse;
   }
 
   .select {
-    margin: 0 0 2rem 15rem;
+    margin: 0 15rem 2rem 0;
   }
 
   .todo-container {
@@ -239,11 +239,6 @@ button:active {
 }
 
 @media screen and (max-width: 500px) {
-  .select {
-    position: relative;
-    right: 0;
-  }
-
   .todo {
     font-size: 1.5rem;
     width: 25rem;
@@ -256,8 +251,7 @@ button:active {
 
 @media screen and (max-width: 450px) {
   .select {
-    position: relative;
-    right: 1rem;
+    margin: 0 13rem 2rem 0;
   }
 
   form input,
@@ -268,8 +262,7 @@ button:active {
 
 @media screen and (max-width: 400px) {
   .select {
-    position: relative;
-    right: 2rem;
+    margin: 0 10rem 2rem 0;
   }
 
   form input,
@@ -285,12 +278,15 @@ button:active {
 
 @media screen and (max-width: 375px) {
   .select {
-    position: relative;
-    right: 4rem;
+    margin: 0 8rem 2rem 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 330px) {
   form input,
   form button {
     font-size: 1.3rem;
