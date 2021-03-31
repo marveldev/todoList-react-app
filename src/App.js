@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>My TodoList App</h1>
+      <h1>My App</h1>
       <Form
         setFilterParam={setFilterParam}
       />
