@@ -180,7 +180,7 @@ button:active {
 }
 
 .edit-modal form {
-  margin-top: 1.5em;
+  margin: 1.5em;
 }
 
 .edit-modal {
@@ -221,10 +221,6 @@ button:active {
 }
 
 @media screen and (max-width: 765px) {
-  form {
-    flex-direction: column-reverse;
-  }
-
   .select {
     margin: 0 15rem 2rem 0;
   }
@@ -244,16 +240,24 @@ button:active {
     width: 25rem;
   }
 
+  form > div {
+    margin-top: 2em;
+  }
+
   .edit-modal {
     width: 100%;
   }
-}
 
-@media screen and (max-width: 450px) {
   .select {
-    margin: 0 13rem 2rem 0;
+    position: absolute;
+    top: 7rem;
   }
 
+  .filter-todo {
+    padding: 0.8rem;
+  }
+
+<<<<<<< HEAD
   form > div:first-child {
     display: inline-flex;
     margin: 0 1em;
@@ -261,6 +265,21 @@ button:active {
 
   form input {
     width: 90%;
+=======
+  .select::after {
+    padding: 0.8rem;
+  }
+
+  h1 {
+    margin: 1.5em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  form input,
+  form button {
+    font-size: 1.8rem;
+>>>>>>> a384825d0015fe3de1d6ddec8f23440c30c07e57
   }
 }
 
@@ -282,7 +301,8 @@ button:active {
 
 @media screen and (max-width: 375px) {
   .select {
-    margin: 0 8rem 2rem 0;
+    position: absolute;
+    top: 5rem;
   }
 
   h1 {
