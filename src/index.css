@@ -254,9 +254,13 @@ button:active {
     margin: 0 13rem 2rem 0;
   }
 
-  form input,
-  form button {
-    font-size: 1.8rem;
+  form > div:first-child {
+    display: inline-flex;
+    margin: 0 1em;
+  }
+
+  form input {
+    width: 90%;
   }
 }
 
@@ -267,7 +271,7 @@ button:active {
 
   form input,
   form button {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
 
   .todo {
@@ -289,7 +293,7 @@ button:active {
 @media screen and (max-width: 350px) {
   form input,
   form button {
-    font-size: 1.3rem;
+    font-size: 1.3em;
   }
 
   .todo {
