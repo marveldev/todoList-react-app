@@ -257,15 +257,6 @@ button:active {
     padding: 0.8rem;
   }
 
-<<<<<<< HEAD
-  form > div:first-child {
-    display: inline-flex;
-    margin: 0 1em;
-  }
-
-  form input {
-    width: 90%;
-=======
   .select::after {
     padding: 0.8rem;
   }
@@ -279,7 +270,6 @@ button:active {
   form input,
   form button {
     font-size: 1.8rem;
->>>>>>> a384825d0015fe3de1d6ddec8f23440c30c07e57
   }
 }
 
