@@ -4,36 +4,42 @@
   box-sizing: border-box;
 }
 
-body {
+#root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  text-align: center;
   background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
   color: white;
   font-family: "Poppins", sans-serif;
-  min-height: 100vh;
 }
 
 h1 {
   font-size: 2rem;
-  text-align: center;
-  margin: 2em;
+  margin: 1em 0;
 }
 
-form {
+.form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-form input,
-form button {
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: none;
-  background: white;
+.todo-input {
+  height: 3em;
+  width: 25em;
+  font-size: 1.2em;
+  padding-left: 1em;
 }
 
 form button {
+  height: 3em;
+  width: 2em;
+  font-size: 1.2em;
   color: #ff6f47;
   background: #f7fffe;
+  border: unset;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -47,6 +53,7 @@ form button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
 }
 
 .todo-list {
@@ -152,7 +159,8 @@ button:active {
 }
 
 .delete-modal {
-  position: absolute;
+  position: fixed;
+  top: 20%;
   z-index: 1;
   background: #fff;
   color: #000;
@@ -180,11 +188,12 @@ button:active {
 }
 
 .edit-modal form {
-  margin: 1.5em;
+  margin: 1em;
 }
 
 .edit-modal {
-  position: absolute;
+  position: fixed;
+  top: 20%;
   z-index: 1;
   background: #fff;
   color: #000;
@@ -195,8 +204,17 @@ button:active {
 }
 
 .edit-modal input {
+  height: 2em;
+  width: 90%;
+  font-size: 1em;
+  padding-left: 1em;
   border: 0.1rem solid #000;
   background: #ff6f47de;
+}
+
+.edit-modal .form > button {
+  height: 2em;
+  font-size: 1em;
 }
 
 .edit-modal > div {
@@ -220,13 +238,10 @@ button:active {
   flex: 0.8;
 }
 
-@media screen and (max-width: 765px) {
-  .select {
-    margin: 0 15rem 2rem 0;
-  }
-
-  .todo-container {
-    margin-top: 1em;
+@media screen and (max-width: 768px) {
+  .form {
+    flex-direction: column-reverse;
+    margin-bottom: 1em;
   }
 
   .edit-modal form {
@@ -234,79 +249,14 @@ button:active {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .todo {
-    font-size: 1.5rem;
-    width: 25rem;
-  }
-
-  form > div {
-    margin-top: 2em;
+@media screen and (max-width: 520px) {
+  .form > div:first-child {
+    width: 90%;
+    display: flex;
+    justify-content: center;
   }
 
   .edit-modal {
     width: 100%;
-  }
-
-  .select {
-    position: absolute;
-    top: 7rem;
-  }
-
-  .filter-todo {
-    padding: 0.8rem;
-  }
-
-  .select::after {
-    padding: 0.8rem;
-  }
-
-  h1 {
-    margin: 1.5em;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  form input,
-  form button {
-    font-size: 1.8rem;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .select {
-    margin: 0 10rem 2rem 0;
-  }
-
-  form input,
-  form button {
-    font-size: 1.5em;
-  }
-
-  .todo {
-    font-size: 1.3rem;
-    width: 21rem;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .select {
-    position: absolute;
-    top: 5rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  form input,
-  form button {
-    font-size: 1.3em;
-  }
-
-  .todo {
-    width: 18rem;
   }
 }

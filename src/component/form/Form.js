@@ -22,9 +22,9 @@ const Form = ({ setFilterParam }) => {
 
   return (
     <>
-      <form onSubmit={addTodo}>
+      <form className="form" onSubmit={addTodo}>
         <div>
-          <input type="text" className="todo-input" placeholder="Todo" autoFocus required/>
+          <input type="text" className="todo-input" maxLength="30" placeholder="Todo" autoFocus required/>
           <button type="submit"><i className="fas fa-plus-square"></i></button>
         </div>
         <div className="select">

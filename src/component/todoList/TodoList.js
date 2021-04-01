@@ -51,7 +51,7 @@ const TodoList = ({ filterParam, allTodos }) => {
             </button>
             <p>Enter new Todo</p>
           </div>
-          <form onSubmit={(event) => editTodo(event, selectedTodo)}>
+          <form className="form" onSubmit={(event) => editTodo(event, selectedTodo)}>
             <input type="text" className="new-todo-input"
               defaultValue={selectedTodo.todoText} autoFocus required
             />
