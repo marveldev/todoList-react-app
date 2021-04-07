@@ -74,24 +74,24 @@ const TodoList = ({ allTodos }) => {
       <div className="todo-list">
         {filteredItems && filteredItems.map(singleTodo => (
           <div key={singleTodo.id} className="todo">
-            <li
+            <span
               className={`todo-text ${singleTodo.status === 'completed' && 'completed'}`}
             >
               {singleTodo.todoText}
-              </li>
-            <button
+            </span>
+            <button aria-label="complete"
               onClick={() => markAsComplete(singleTodo)}
               className="complete-button"
             >
               <i className="fas fa-check"></i>
             </button>
-            <button
+            <button aria-label="edit"
               onClick={() => { setEditModal(true); setSelectedTodo(singleTodo) }}
               className="edit-button"
             >
               <i className="fa fa-edit"></i>
             </button>
-            <button
+            <button aria-label="delete"
               onClick={() => { setDeleteModal(true); setSelectedTodo(singleTodo) }}
               className="trash-button"
             >

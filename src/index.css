@@ -73,10 +73,6 @@ form button:hover {
   transition: all 1s ease;
 }
 
-.todo li {
-  flex: 1;
-}
-
 button:active {
   transform: translateY(0.1rem);
 }
@@ -102,6 +98,7 @@ button:active {
 
 .todo-text {
   padding: 0rem 0.5rem;
+  flex: 1;
 }
 
 #inputMessage {

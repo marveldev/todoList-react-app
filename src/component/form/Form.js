@@ -28,8 +28,12 @@ const Form = () => {
     <>
       <form className="form" onSubmit={addTodo}>
         <div>
-          <input type="text" className="todo-input" maxLength="30" placeholder="Todo" autoFocus required/>
-          <button type="submit"><i className="fas fa-plus-square"></i></button>
+          <input type="text" className="todo-input"
+            maxLength="30" placeholder="Todo" autoFocus required
+          />
+          <button aria-label="submit" type="submit">
+            <i className="fas fa-plus-square"></i>
+          </button>
         </div>
         <div className="select">
           <select
