@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { useSelector } from 'react-redux' // to then access the store we use the useSelector()
 import datastore from '../../dataStore'
 
-const TodoList = ({ filterParam, allTodos }) => {
+const TodoList = ({ allTodos }) => {
   const [deleteModal, setDeleteModal] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState({})
   const [editModal, setEditModal] = useState(false)
@@ -62,9 +63,11 @@ const TodoList = ({ filterParam, allTodos }) => {
     )
   }
 
-  const filteredItems = filterParam === 'all'
+  const todoState = useSelector((state) => state.todoParam.param)
+
+  const filteredItems = todoState === 'all'
     ? allTodos
-    : allTodos.filter(item => item.status === filterParam)
+    : allTodos.filter(item => item.status === todoState)
 
   return (
     <div className="todo-container">

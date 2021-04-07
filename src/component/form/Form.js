@@ -1,6 +1,10 @@
+import { useDispatch } from 'react-redux'  // to write/modify data in the store we use the useDispatch()
+import { todoActions } from '../redux/slice'
 import datastore from '../../dataStore'
 
-const Form = ({ setFilterParam }) => {
+const Form = () => {
+  const dispatch = useDispatch()
+
   const addTodo = async event => {
     event.preventDefault()
     const todoText = document.querySelector('.todo-input').value
@@ -29,7 +33,7 @@ const Form = ({ setFilterParam }) => {
         </div>
         <div className="select">
           <select
-            onChange={(event) => setFilterParam(event.target.value)}
+            onChange={(event) => dispatch(todoActions.filterParams(event.target.value))}
             name="todoList"
             className="filter-todo"
           >
