@@ -1,4 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
+import ChatBox from 'react-custom-chat'
 import datastore from './dataStore'
 import { Form, TodoList } from './component'
 import './index.css'
@@ -13,6 +14,14 @@ const App = () => {
       <Form/>
       <TodoList
         allTodos={allTodos}
+      />
+      <ChatBox
+        settings={{
+          primaryColor: 'blue',
+          secondaryColor: 'green',
+          navColor: 'green',
+          navText: 'Marvel'
+        }}
       />
     </div>
   )
