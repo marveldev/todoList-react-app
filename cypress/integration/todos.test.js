@@ -13,12 +13,6 @@ describe('Todos', () => {
     cy.findByRole('textbox').should('contain', '')
   })
 
-  //user should be able to filter between todos
-  it('user should be able to filter between todos', () => {
-    cy.findByRole('combobox').select('Completed')
-
-  })
-
   //user should be able to toggle the state of a task
   it('user should be able to toggle the state of a todo', () => {
     cy.get('.todo-text').first().then(($todo) => {
@@ -39,6 +33,13 @@ describe('Todos', () => {
     cy.get('.new-todo-input').clear().type('Singing')
     cy.get('.edit-modal').find('.form').submit()
     cy.get('.todo-text').first().should('contain', 'Singing')
+  })
+
+  //user should be able to select between todo options
+  it('user should be able to select between todo options', () => {
+    cy.get('select').select('All').should('have.value', 'all')
+    cy.get('select').select('Completed').should('have.value', 'completed')
+    cy.get('select').select('Uncompleted').should('have.value', 'uncompleted')
   })
 
   //user should be able to delete a task
