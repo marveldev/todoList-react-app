@@ -32,7 +32,7 @@ const Form = () => {
             maxLength="30" placeholder="Todo" autoFocus required
           />
           <button aria-label="submit" type="submit">
-            <i className="fas fa-plus-square"></i>
+            <i className="fas fa-plus-square" />
           </button>
         </div>
         <div className="select">

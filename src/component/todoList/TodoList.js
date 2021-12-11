@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useSelector } from 'react-redux' // to then access the store we use the useSelector()
+import { useSelector } from 'react-redux'
 import datastore from '../../dataStore'
 
 const TodoList = ({ allTodos }) => {
@@ -27,7 +27,7 @@ const TodoList = ({ allTodos }) => {
   const DeleteModal = ({ selectedTodo }) => {
     return (
       <>
-        <div onClick={() => setDeleteModal(false)} className="overlay"></div>
+        <div onClick={() => setDeleteModal(false)} className="overlay" />
         <div className="delete-modal">
           <p>Are you sure, you want to delete?</p>
           <button onClick={() => setDeleteModal(false)}>Cancel</button>
@@ -44,7 +44,7 @@ const TodoList = ({ allTodos }) => {
   const EditModal = ({ selectedTodo }) => {
     return (
       <>
-        <div onClick={() => setEditModal(false)} className="overlay"></div>
+        <div onClick={() => setEditModal(false)} className="overlay" />
         <div className="edit-modal">
           <div>
             <button onClick={() => setEditModal(false)}>
@@ -56,7 +56,7 @@ const TodoList = ({ allTodos }) => {
             <input type="text" className="new-todo-input"
               defaultValue={selectedTodo.todoText} autoFocus required
             />
-            <button type="submit"><i className="fas fa-plus-square"></i></button>
+            <button type="submit"><i className="fas fa-plus-square" /></button>
           </form>
         </div>
       </>
@@ -83,19 +83,19 @@ const TodoList = ({ allTodos }) => {
               onClick={() => markAsComplete(singleTodo)}
               className="complete-button"
             >
-              <i className="fas fa-check"></i>
+              <i className="fas fa-check" />
             </button>
             <button aria-label="edit"
               onClick={() => { setEditModal(true); setSelectedTodo(singleTodo) }}
               className="edit-button"
             >
-              <i className="fa fa-edit"></i>
+              <i className="fa fa-edit" />
             </button>
             <button aria-label="delete"
               onClick={() => { setDeleteModal(true); setSelectedTodo(singleTodo) }}
               className="trash-button"
             >
-              <i className="fas fa-trash"></i>
+              <i className="fas fa-trash" />
             </button>
           </div>
         ))}

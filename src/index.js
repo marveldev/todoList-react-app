@@ -12,7 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 )
-
-// install the redux and redux toolkit from the terminal.
-// The provider is a property of redux that makes the redux store available
-// to the components wrapped around it.
