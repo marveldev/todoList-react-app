@@ -70,21 +70,21 @@ const TodoList = ({ allTodos }) => {
     : allTodos.filter(item => item.status === todoState)
 
   return (
-    <div className="todo-container">
-      <div className="todo-list">
+    <div className="">
+      <ul className="list-group mt-5">
         {filteredItems && filteredItems.map(singleTodo => (
-          <div key={singleTodo.id} className="todo">
+          <li key={singleTodo.id} className="list-group-item m-auto mb-2 rounded">
             <span
               className={`todo-text ${singleTodo.status === 'completed' && 'completed'}`}
             >
               {singleTodo.todoText}
             </span>
-            <button aria-label="complete"
-              onClick={() => markAsComplete(singleTodo)}
-              className="complete-button"
-            >
-              <i className="fas fa-check" />
-            </button>
+            <div>
+              <input className="form-check-input fs-3" type="checkbox" value="" id="flexCheckChecked" />
+              <img src="./edit-icon.svg" alt="edit" />
+            </div>
+
+
             <button aria-label="edit"
               onClick={() => { setEditModal(true); setSelectedTodo(singleTodo) }}
               className="edit-button"
@@ -97,9 +97,9 @@ const TodoList = ({ allTodos }) => {
             >
               <i className="fas fa-trash" />
             </button>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       {editModal &&
         <EditModal
           selectedTodo={selectedTodo}

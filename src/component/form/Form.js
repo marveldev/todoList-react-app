@@ -29,8 +29,9 @@ const Form = () => {
         onChange={event => dispatch(todoActions.filterParams(event.target.value))}
         className="form-select m-auto mb-3"
         aria-label="select todo filter"
+        defaultValue="all"
       >
-        <option selected value="all">All</option>
+        <option value="all">All</option>
         <option value="completed">Completed</option>
         <option value="uncompleted">Uncompleted</option>
       </select>
