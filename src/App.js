@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>My TodoList App</h1>
+      <h1 className="m-4 text-center">My TodoList</h1>
       <Form/>
       <TodoList
         allTodos={allTodos}
