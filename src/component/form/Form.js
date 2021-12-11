@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'  // to write/modify data in the store we use the useDispatch()
+import { useDispatch } from 'react-redux'
 import { todoActions } from '../redux/slice'
 import datastore from '../../dataStore'
 
@@ -7,47 +7,53 @@ const Form = () => {
 
   const addTodo = async event => {
     event.preventDefault()
-    const todoText = document.querySelector('.todo-input').value
+    const todoText = document.querySelector('#todoText')
 
-    if (todoText.trim().length >= 1) {
+    if (todoText.value.trim().length >= 1) {
       const todoObject = {
-        todoText,
+        todoText: todoText.value,
         status: 'uncompleted'
       }
 
       await datastore.todos.add(todoObject)
-
-      document.querySelector('.todo-input').value = ''
-      document.querySelector('#inputMessage').style.display = 'none'
+      todoText.classList.remove('is-invalid')
+      todoText.value = ''
     } else {
-      document.querySelector('#inputMessage').style.display = 'block'
+      todoText.classList.add('is-invalid')
     }
   }
 
   return (
     <>
-      <form className="form" onSubmit={addTodo}>
-        <div>
-          <input type="text" className="todo-input"
-            maxLength="30" placeholder="Todo" autoFocus required
-          />
-          <button aria-label="submit" type="submit">
-            <i className="fas fa-plus-square" />
-          </button>
-        </div>
-        <div className="select">
-          <select
-            onChange={(event) => dispatch(todoActions.filterParams(event.target.value))}
-            name="todoList"
-            className="filter-todo"
-          >
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="uncompleted">Uncompleted</option>
-          </select>
+      <select
+        onChange={event => dispatch(todoActions.filterParams(event.target.value))}
+        className="form-select m-auto mb-3"
+        aria-label="select todo filter"
+      >
+        <option selected value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="uncompleted">Uncompleted</option>
+      </select>
+
+      <form className="input-group m-auto" onSubmit={addTodo}>
+        <input
+          type="text"
+          id="todoText"
+          className="form-control"
+          placeholder="What do you want to do?"
+          aria-label="What do you want to do?"
+        />
+        <button
+          className="btn btn-primary rounded-end"
+          type="submit"
+          aria-label="submit"
+        >
+          Add
+        </button>
+        <div className="invalid-feedback">
+          Please enter a valid input.
         </div>
       </form>
-      <p id="inputMessage">"Blank field cannot be added"</p>
     </>
   )
 }
