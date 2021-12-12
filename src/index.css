@@ -16,6 +16,22 @@
 
 .list-group-item {
   width: 40%;
+  height: 2.7em;
+}
+
+.todo-text {
+  flex: 0.7em;
+}
+
+.list-group-item button {
+  border: unset;
+  width: 3em;
+  height: 2.3em;
+  background: #E9ECEF;
+}
+
+button:active {
+  transform: translateY(0.1em);
 }
 
 @media screen and (max-width: 645px) {
@@ -24,6 +40,10 @@
   }
 
   .form-select {
+    width: 95%;
+  }
+
+  .list-group-item {
     width: 95%;
   }
 }

@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import datastore from '../../dataStore'
+import EditIcon from './edit-icon.svg'
+import DeleteIcon from './delete-icon.svg'
 
 const TodoList = ({ allTodos }) => {
   const [deleteModal, setDeleteModal] = useState(false)
@@ -71,31 +73,30 @@ const TodoList = ({ allTodos }) => {
 
   return (
     <div className="">
-      <ul className="list-group mt-5">
+      <ul className="list-group my-5">
         {filteredItems && filteredItems.map(singleTodo => (
-          <li key={singleTodo.id} className="list-group-item m-auto mb-2 rounded">
+          <li
+            key={singleTodo.id}
+            className="list-group-item d-flex flex-row align-items-center m-auto mb-2 rounded"
+          >
             <span
-              className={`todo-text ${singleTodo.status === 'completed' && 'completed'}`}
+              className={`text-truncate fs-5 bg-white todo-text
+                ${singleTodo.status === 'completed' && 'completed'}`
+              }
             >
               {singleTodo.todoText}
             </span>
-            <div>
-              <input className="form-check-input fs-3" type="checkbox" value="" id="flexCheckChecked" />
-              <img src="./edit-icon.svg" alt="edit" />
-            </div>
 
-
-            <button aria-label="edit"
-              onClick={() => { setEditModal(true); setSelectedTodo(singleTodo) }}
-              className="edit-button"
-            >
-              <i className="fa fa-edit" />
+            <button className="rounded">
+              <input className="form-check-input fs-3 border-3 mt-0" type="checkbox" />
             </button>
-            <button aria-label="delete"
-              onClick={() => { setDeleteModal(true); setSelectedTodo(singleTodo) }}
-              className="trash-button"
-            >
-              <i className="fas fa-trash" />
+
+            <button className="rounded mx-1">
+              <img src={EditIcon} className="bg-transparent" alt="edit" />
+            </button>
+
+            <button className="rounded">
+              <img src={DeleteIcon} className="bg-transparent" alt="delete" />
             </button>
           </li>
         ))}
