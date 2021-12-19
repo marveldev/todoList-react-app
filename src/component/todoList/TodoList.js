@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import datastore from '../../dataStore'
+import EditModal from './EditModal'
 import EditIcon from './edit-icon.svg'
 import DeleteIcon from './delete-icon.svg'
 
@@ -43,27 +44,27 @@ const TodoList = ({ allTodos }) => {
     )
   }
 
-  const EditModal = ({ selectedTodo }) => {
-    return (
-      <>
-        <div onClick={() => setEditModal(false)} className="overlay" />
-        <div className="edit-modal">
-          <div>
-            <button onClick={() => setEditModal(false)}>
-              <i className="material-icons">&#xe5cd;</i>
-            </button>
-            <p>Enter new Todo</p>
-          </div>
-          <form className="form" onSubmit={(event) => editTodo(event, selectedTodo)}>
-            <input type="text" className="new-todo-input"
-              defaultValue={selectedTodo.todoText} autoFocus required
-            />
-            <button type="submit"><i className="fas fa-plus-square" /></button>
-          </form>
-        </div>
-      </>
-    )
-  }
+  // const EditModal = ({ selectedTodo }) => {
+  //   return (
+  //     <>
+  //       <div onClick={() => setEditModal(false)} className="overlay" />
+  //       <div className="edit-modal">
+  //         <div>
+  //           <button onClick={() => setEditModal(false)}>
+  //             <i className="material-icons">&#xe5cd;</i>
+  //           </button>
+  //           <p>Enter new Todo</p>
+  //         </div>
+  //         <form className="form" onSubmit={(event) => editTodo(event, selectedTodo)}>
+  //           <input type="text" className="new-todo-input"
+  //             defaultValue={selectedTodo.todoText} autoFocus required
+  //           />
+  //           <button type="submit"><i className="fas fa-plus-square" /></button>
+  //         </form>
+  //       </div>
+  //     </>
+  //   )
+  // }
 
   const todoState = useSelector((state) => state.todoParam.param)
 
@@ -105,11 +106,12 @@ const TodoList = ({ allTodos }) => {
           </li>
         ))}
       </ul>
-      {editModal &&
-        <EditModal
-          selectedTodo={selectedTodo}
-        />
-      }
+      <EditModal />
+      {/*{editModal &&*/}
+      {/*  <EditModal*/}
+      {/*    selectedTodo={selectedTodo}*/}
+      {/*  />*/}
+      {/*}*/}
       {deleteModal &&
         <DeleteModal
           selectedTodo={selectedTodo}

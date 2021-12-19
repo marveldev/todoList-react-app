@@ -31,9 +31,9 @@ const Form = () => {
         aria-label="select todo filter"
         defaultValue="all"
       >
-        <option value="all">All</option>
-        <option value="completed">Completed</option>
-        <option value="uncompleted">Uncompleted</option>
+        <option value="all" className="bg-white">All</option>
+        <option value="completed" className="bg-white">Completed</option>
+        <option value="uncompleted" className="bg-white">Uncompleted</option>
       </select>
 
       <form className="input-group m-auto" onSubmit={addTodo}>
