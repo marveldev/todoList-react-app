@@ -11,7 +11,7 @@ const TodoList = ({ allTodos }) => {
 
   const markAsComplete = async selectedTodo => {
     const status = selectedTodo.status === 'completed' ? 'uncompleted' : 'completed'
-    await datastore.todos.update(selectedTodo.id, {status: status})
+    await datastore.todos.update(selectedTodo.id, {status})
   }
 
   const deleteTodo = async id => {
@@ -72,7 +72,7 @@ const TodoList = ({ allTodos }) => {
     : allTodos.filter(item => item.status === todoState)
 
   return (
-    <div className="">
+    <div>
       <ul className="list-group my-5">
         {filteredItems && filteredItems.map(singleTodo => (
           <li
@@ -80,15 +80,19 @@ const TodoList = ({ allTodos }) => {
             className="list-group-item d-flex flex-row align-items-center m-auto mb-2 rounded"
           >
             <span
-              className={`text-truncate fs-5 bg-white todo-text
-                ${singleTodo.status === 'completed' && 'completed'}`
+              className={`text-truncate fs-5 bg-white todo-text 
+                ${singleTodo.status === 'completed' && 'text-decoration-line-through text-danger'}`
               }
             >
               {singleTodo.todoText}
             </span>
 
-            <button className="rounded">
-              <input className="form-check-input fs-3 border-3 mt-0" type="checkbox" />
+            <button className="rounded" onClick={() => markAsComplete(singleTodo)}>
+              <input
+                className="form-check-input fs-3 border-3 mt-0"
+                type="checkbox"
+                defaultChecked={singleTodo.status === 'completed' && true}
+              />
             </button>
 
             <button className="rounded mx-1">
