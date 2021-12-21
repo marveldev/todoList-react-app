@@ -8,7 +8,7 @@ import DeleteIcon from './delete-icon.svg'
 const TodoList = ({ allTodos }) => {
   const [deleteModal, setDeleteModal] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState({})
-  const [editModal, setEditModal] = useState(false)
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false)
 
   const markAsComplete = async selectedTodo => {
     const status = selectedTodo.status === 'completed' ? 'uncompleted' : 'completed'
@@ -24,7 +24,7 @@ const TodoList = ({ allTodos }) => {
     event.preventDefault()
     const newTodoInput = document.querySelector('.new-todo-input').value
     await datastore.todos.update(selectedTodo.id, {todoText: newTodoInput})
-    setEditModal(false)
+    // setEditModal(false)
   }
 
   const DeleteModal = ({ selectedTodo }) => {
@@ -43,28 +43,6 @@ const TodoList = ({ allTodos }) => {
       </>
     )
   }
-
-  // const EditModal = ({ selectedTodo }) => {
-  //   return (
-  //     <>
-  //       <div onClick={() => setEditModal(false)} className="overlay" />
-  //       <div className="edit-modal">
-  //         <div>
-  //           <button onClick={() => setEditModal(false)}>
-  //             <i className="material-icons">&#xe5cd;</i>
-  //           </button>
-  //           <p>Enter new Todo</p>
-  //         </div>
-  //         <form className="form" onSubmit={(event) => editTodo(event, selectedTodo)}>
-  //           <input type="text" className="new-todo-input"
-  //             defaultValue={selectedTodo.todoText} autoFocus required
-  //           />
-  //           <button type="submit"><i className="fas fa-plus-square" /></button>
-  //         </form>
-  //       </div>
-  //     </>
-  //   )
-  // }
 
   const todoState = useSelector((state) => state.todoParam.param)
 
@@ -96,7 +74,7 @@ const TodoList = ({ allTodos }) => {
               />
             </button>
 
-            <button className="rounded mx-1">
+            <button className="rounded mx-1" onClick={() => setEditModalIsOpen(true)}>
               <img src={EditIcon} className="bg-transparent" alt="edit" />
             </button>
 
@@ -106,12 +84,12 @@ const TodoList = ({ allTodos }) => {
           </li>
         ))}
       </ul>
-      <EditModal />
-      {/*{editModal &&*/}
-      {/*  <EditModal*/}
-      {/*    selectedTodo={selectedTodo}*/}
-      {/*  />*/}
-      {/*}*/}
+      {editModalIsOpen &&
+        <EditModal
+          selectedTodo={selectedTodo}
+          setEditModalIsOpen={setEditModalIsOpen}
+        />
+      }
       {deleteModal &&
         <DeleteModal
           selectedTodo={selectedTodo}
