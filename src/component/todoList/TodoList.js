@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import EditModal from './EditModal'
+import DeleteModal from './DeleteModal'
 import datastore from '../../dataStore'
 import { editIcon, deleteIcon } from '../../assets'
 
 const TodoList = ({ allTodos }) => {
-  const [deleteModal, setDeleteModal] = useState(false)
+  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState()
   const [editModalIsOpen, setEditModalIsOpen] = useState(false)
 
@@ -14,29 +15,7 @@ const TodoList = ({ allTodos }) => {
     await datastore.todos.update(selectedTodo.id, {status})
   }
 
-  const deleteTodo = async id => {
-    await datastore.todos.delete(id)
-    setDeleteModal(false)
-  }
-
-  const DeleteModal = ({ selectedTodo }) => {
-    return (
-      <>
-        <div onClick={() => setDeleteModal(false)} className="overlay" />
-        <div className="delete-modal">
-          <p>Are you sure, you want to delete?</p>
-          <button onClick={() => setDeleteModal(false)}>Cancel</button>
-          <button
-            onClick={() => deleteTodo(selectedTodo.id)} id="deleteButton"
-          >
-            Confirm
-          </button>
-        </div>
-      </>
-    )
-  }
-
-  const todoState = useSelector((state) => state.todoParam.param)
+  const todoState = useSelector(state => state.todoParam.param)
 
   const filteredItems = todoState === 'all'
     ? allTodos
@@ -73,7 +52,10 @@ const TodoList = ({ allTodos }) => {
               <img src={editIcon} className="bg-transparent" alt="edit" />
             </button>
 
-            <button className="rounded">
+            <button className="rounded" onClick={() => {
+              setDeleteModalIsOpen(true)
+              setSelectedTodo(singleTodo)
+            }}>
               <img src={deleteIcon} className="bg-transparent" alt="delete" />
             </button>
           </li>
@@ -85,9 +67,10 @@ const TodoList = ({ allTodos }) => {
           setEditModalIsOpen={setEditModalIsOpen}
         />
       }
-      {deleteModal &&
+      {deleteModalIsOpen &&
         <DeleteModal
-          // selectedTodo={selectedTodo}
+          selectedTodo={selectedTodo}
+          setDeleteModalIsOpen={setDeleteModalIsOpen}
         />
       }
     </div>

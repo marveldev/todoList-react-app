@@ -51,7 +51,7 @@ const Form = () => {
         >
           Add
         </button>
-        <div className="invalid-feedback">
+        <div className="invalid-feedback fw-bold">
           Please enter a valid input.
         </div>
       </form>

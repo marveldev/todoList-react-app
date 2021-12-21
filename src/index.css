@@ -43,7 +43,8 @@ button:active {
   background: #18181882;
 }
 
-.edit-modal {
+.edit-modal,
+.delete-modal {
   width: 50%;
   margin: 6em auto;
   height: 10.5em;
@@ -63,7 +64,8 @@ button:active {
     width: 95%;
   }
 
-  .edit-modal {
+  .edit-modal,
+  .delete-modal {
     width: 100%;
   }
 }
