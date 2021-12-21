@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import datastore from '../../dataStore'
 import EditModal from './EditModal'
-import EditIcon from './edit-icon.svg'
-import DeleteIcon from './delete-icon.svg'
+import datastore from '../../dataStore'
+import { editIcon, deleteIcon } from '../../assets'
 
 const TodoList = ({ allTodos }) => {
   const [deleteModal, setDeleteModal] = useState(false)
-  const [selectedTodo, setSelectedTodo] = useState({})
+  const [selectedTodo, setSelectedTodo] = useState()
   const [editModalIsOpen, setEditModalIsOpen] = useState(false)
 
   const markAsComplete = async selectedTodo => {
@@ -18,13 +17,6 @@ const TodoList = ({ allTodos }) => {
   const deleteTodo = async id => {
     await datastore.todos.delete(id)
     setDeleteModal(false)
-  }
-
-  const editTodo = async (event, selectedTodo) => {
-    event.preventDefault()
-    const newTodoInput = document.querySelector('.new-todo-input').value
-    await datastore.todos.update(selectedTodo.id, {todoText: newTodoInput})
-    // setEditModal(false)
   }
 
   const DeleteModal = ({ selectedTodo }) => {
@@ -74,12 +66,15 @@ const TodoList = ({ allTodos }) => {
               />
             </button>
 
-            <button className="rounded mx-1" onClick={() => setEditModalIsOpen(true)}>
-              <img src={EditIcon} className="bg-transparent" alt="edit" />
+            <button className="rounded mx-1" onClick={() => {
+              setEditModalIsOpen(true)
+              setSelectedTodo(singleTodo)
+            }}>
+              <img src={editIcon} className="bg-transparent" alt="edit" />
             </button>
 
             <button className="rounded">
-              <img src={DeleteIcon} className="bg-transparent" alt="delete" />
+              <img src={deleteIcon} className="bg-transparent" alt="delete" />
             </button>
           </li>
         ))}
@@ -92,7 +87,7 @@ const TodoList = ({ allTodos }) => {
       }
       {deleteModal &&
         <DeleteModal
-          selectedTodo={selectedTodo}
+          // selectedTodo={selectedTodo}
         />
       }
     </div>
