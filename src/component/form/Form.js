@@ -25,16 +25,31 @@ const Form = () => {
 
   return (
     <>
-      <select
-        onChange={event => dispatch(todoActions.filterParams(event.target.value))}
-        className="form-select m-auto mb-3"
-        aria-label="select todo filter"
-        defaultValue="all"
-      >
-        <option value="all" className="bg-white">All</option>
-        <option value="completed" className="bg-white">Completed</option>
-        <option value="uncompleted" className="bg-white">Uncompleted</option>
-      </select>
+      <div className="d-flex flex-row m-auto w-50 gap-3 fw-bold mb-3">
+        <label>
+          Filter List:
+          <select
+            onChange={event => dispatch(todoActions.filterParams(event.target.value))}
+            className="form-select"
+            defaultValue="all"
+          >
+            <option value="all" className="bg-white">All</option>
+            <option value="completed" className="bg-white">Completed</option>
+            <option value="uncompleted" className="bg-white">Uncompleted</option>
+          </select>
+        </label>
+
+        <label>Theme:
+          <select
+            // onChange={event => dispatch(todoActions.filterParams(event.target.value))}
+            className="form-select"
+            defaultValue="white"
+          >
+            <option value="white" className="bg-white">White</option>
+            <option value="dark" className="bg-white">Dark</option>
+          </select>
+        </label>
+      </div>
 
       <form className="input-group m-auto" onSubmit={addTodo}>
         <input

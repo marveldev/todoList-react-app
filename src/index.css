@@ -11,11 +11,10 @@
 
 .form-select {
   cursor: pointer;
-  width: 50%;
 }
 
 .list-group-item {
-  width: 40%;
+  width: 45%;
   height: 2.7em;
 }
 
