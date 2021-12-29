@@ -43,7 +43,7 @@ const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
             type="submit"
             aria-label="submit"
           >
-            Add
+            Update
           </button>
           <div className="invalid-feedback bg-transparent">
             Please enter a valid input.

@@ -23,21 +23,21 @@ const TodoList = ({ allTodos }) => {
 
   return (
     <div>
-      <ul className="list-group my-5">
+      <ul className="list-group my-4">
         {filteredItems && filteredItems.map(singleTodo => (
           <li
             key={singleTodo.id}
-            className="list-group-item d-flex flex-row align-items-center m-auto mb-2 rounded"
+            className="list-group-item d-flex align-items-center rounded-pill border border-success border-5"
           >
             <span
-              className={`text-truncate fs-5 bg-white todo-text 
-                ${singleTodo.status === 'completed' && 'text-decoration-line-through text-danger'}`
+              className={`text-truncate fs-5 bg-white todo-text
+                ${singleTodo.status === 'completed' && 'text-decoration-line-through'}`
               }
             >
               {singleTodo.todoText}
             </span>
 
-            <button className="rounded" onClick={() => markAsComplete(singleTodo)}>
+            <button onClick={() => markAsComplete(singleTodo)}>
               <input
                 className="form-check-input fs-3 border-3 mt-0"
                 type="checkbox"
@@ -45,14 +45,14 @@ const TodoList = ({ allTodos }) => {
               />
             </button>
 
-            <button className="rounded mx-1" onClick={() => {
+            <button onClick={() => {
               setEditModalIsOpen(true)
               setSelectedTodo(singleTodo)
             }}>
-              <img src={editIcon} className="bg-transparent" alt="edit" />
+              <img src={editIcon} className="h-75 bg-transparent" alt="edit" />
             </button>
 
-            <button className="rounded" onClick={() => {
+            <button onClick={() => {
               setDeleteModalIsOpen(true)
               setSelectedTodo(singleTodo)
             }}>

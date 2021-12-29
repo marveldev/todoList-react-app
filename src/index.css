@@ -2,10 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #24C6DC;
+  background: #E9ECEF;
+  /*background: #0c0c18;*/
+  font-family: 'Inconsolata', monospace;
+  /*color: #fff;*/
 }
 
-.input-group {
+.form-wrapper {
   width: 50%;
 }
 
@@ -14,19 +17,20 @@
 }
 
 .list-group-item {
-  width: 45%;
-  height: 2.7em;
+  width: 50%;
+  height: 2.8em;
+  margin: 0.3em auto;
 }
 
 .todo-text {
-  flex: 0.7em;
+  flex: 0.6em;
 }
 
 .list-group-item button {
   border: unset;
   width: 3em;
-  height: 2.3em;
-  background: #E9ECEF;
+  height: 2em;
+  background: transparent;
 }
 
 button:active {
@@ -51,7 +55,7 @@ button:active {
 }
 
 @media screen and (max-width: 645px) {
-  .input-group {
+  .form-wrapper {
     width: 95%;
   }
 

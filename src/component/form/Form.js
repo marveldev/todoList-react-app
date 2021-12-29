@@ -24,13 +24,13 @@ const Form = () => {
   }
 
   return (
-    <>
-      <div className="d-flex flex-row m-auto w-50 gap-3 fw-bold mb-3">
+    <div className="form-wrapper fw-bold m-auto">
+      <div className="d-flex gap-3">
         <label>
           Filter List:
           <select
             onChange={event => dispatch(todoActions.filterParams(event.target.value))}
-            className="form-select"
+            className="form-select shadow-sm"
             defaultValue="all"
           >
             <option value="all" className="bg-white">All</option>
@@ -39,38 +39,41 @@ const Form = () => {
           </select>
         </label>
 
-        <label>Theme:
+        <label>
+          Theme:
           <select
-            // onChange={event => dispatch(todoActions.filterParams(event.target.value))}
-            className="form-select"
+            className="form-select shadow-sm"
             defaultValue="white"
           >
-            <option value="white" className="bg-white">White</option>
+            <option value="light" className="bg-white">Light</option>
             <option value="dark" className="bg-white">Dark</option>
           </select>
         </label>
       </div>
 
-      <form className="input-group m-auto" onSubmit={addTodo}>
-        <input
-          type="text"
-          id="todoText"
-          className="form-control"
-          placeholder="What do you want to do?"
-          aria-label="What do you want to do?"
-        />
-        <button
-          className="btn btn-primary rounded-end"
-          type="submit"
-          aria-label="submit"
-        >
-          Add
-        </button>
-        <div className="invalid-feedback fw-bold">
-          Please enter a valid input.
-        </div>
-      </form>
-    </>
+      <div className="mt-4">
+        <label>Enter Todo:</label>
+        <form className="input-group w-100 shadow-sm" onSubmit={addTodo}>
+          <input
+            type="text"
+            id="todoText"
+            className="form-control p-2"
+            placeholder="What do you want to do?"
+            aria-label="What do you want to do?"
+          />
+          <button
+            className="btn btn-primary rounded-end"
+            type="submit"
+            aria-label="submit"
+          >
+            Add
+          </button>
+          <div className="invalid-feedback fw-bold">
+            Please enter a valid input.
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
