@@ -9,7 +9,7 @@ const DeleteModal = ({ setDeleteModalIsOpen, selectedTodo }) => {
   return (
     <>
       <div className="overlay" onClick={() => setDeleteModalIsOpen(false)} />
-      <div className="delete-modal fixed-top rounded text-center bg-white">
+      <div className="delete-modal fixed-top rounded text-center bg-white text-black">
         <div className="m-5 bg-transparent">
           <h5 className="bg-transparent mb-3">Are you sure, you want to delete?</h5>
           <button

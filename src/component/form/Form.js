@@ -29,7 +29,7 @@ const Form = () => {
         <label>
           Filter List:
           <select
-            onChange={event => dispatch(todoActions.filterParams(event.target.value))}
+            onChange={event => dispatch(todoActions.setFilterParam(event.target.value))}
             className="form-select shadow-sm"
             defaultValue="all"
           >
@@ -42,8 +42,9 @@ const Form = () => {
         <label>
           Theme:
           <select
+            onChange={event => dispatch(todoActions.setThemeParam(event.target.value))}
             className="form-select shadow-sm w-100"
-            defaultValue="white"
+            defaultValue={localStorage.getItem('theme')}
           >
             <option value="light" className="bg-white">Light</option>
             <option value="dark" className="bg-white">Dark</option>

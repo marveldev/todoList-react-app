@@ -18,7 +18,7 @@ const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
       <div className="overlay" onClick={() => setEditModalIsOpen(false)}/>
       <div className="edit-modal fixed-top rounded">
         <div className="modal-header bg-transparent">
-          <h5 className="modal-title bg-transparent">My Todo</h5>
+          <h5 className="modal-title bg-transparent text-black">My Todo</h5>
           <button
             type="button"
             className="btn-close"

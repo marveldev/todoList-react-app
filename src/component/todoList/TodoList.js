@@ -6,20 +6,20 @@ import datastore from '../../dataStore'
 import { editIcon, deleteIcon } from '../../assets'
 
 const TodoList = ({ allTodos }) => {
-  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false)
   const [selectedTodo, setSelectedTodo] = useState()
   const [editModalIsOpen, setEditModalIsOpen] = useState(false)
+  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false)
 
   const markAsComplete = async selectedTodo => {
     const status = selectedTodo.status === 'completed' ? 'uncompleted' : 'completed'
     await datastore.todos.update(selectedTodo.id, {status})
   }
 
-  const todoState = useSelector(state => state.todoParam.param)
+  const filterParam = useSelector(state => state.todoParam.filter)
 
-  const filteredItems = todoState === 'all'
+  const filteredItems = filterParam === 'all'
     ? allTodos
-    : allTodos.filter(item => item.status === todoState)
+    : allTodos.filter(item => item.status === filterParam)
 
   return (
     <div>

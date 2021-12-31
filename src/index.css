@@ -1,11 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.light {
   background: #E9ECEF;
-  /*background: #0c0c18;*/
-  font-family: 'Inconsolata', monospace;
-  /*color: #fff;*/
+}
+
+.dark {
+  background: #0c0c18;
+  color: #fff;
 }
 
 .form-wrapper {
@@ -27,7 +26,7 @@
 }
 
 .completed {
-  outline: 0.2em solid green;
+  outline: 0.2em solid #00c900;
 }
 
 .completed .todo-text {
