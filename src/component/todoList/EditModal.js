@@ -8,7 +8,7 @@ const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
 
     if (todoText.value.trim().length >= 1) {
       await datastore.todos.update(selectedTodo.id, {todoText: todoText.value})
-      toast('updated')
+      toast.success('Updated')
       setEditModalIsOpen(false)
     } else {
       todoText.classList.add('is-invalid')

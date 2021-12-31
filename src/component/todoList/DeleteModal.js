@@ -4,15 +4,7 @@ import datastore from '../../dataStore'
 const DeleteModal = ({ setDeleteModalIsOpen, selectedTodo }) => {
   const deleteTodo = async () => {
     await datastore.todos.delete(selectedTodo.id)
-    // toast('deleted',  {
-    //   position: "top-right",
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    // })
+    toast.success('Deleted')
     setDeleteModalIsOpen(false)
   }
 

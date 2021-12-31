@@ -1,8 +1,9 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useSelector } from 'react-redux'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, Slide } from 'react-toastify'
 import datastore from './dataStore'
 import { Form, TodoList } from './component'
+import 'react-toastify/dist/ReactToastify.css'
 import './index.css'
 
 const App = () => {
@@ -18,7 +19,14 @@ const App = () => {
       <TodoList
         allTodos={allTodos}
       />
-      <ToastContainer />
+      <ToastContainer
+        position='top-right'
+        autoClose={2000}
+        newestOnTop
+        draggable={false}
+        hideProgressBar={true}
+        transition={Slide}
+      />
     </div>
   )
 }

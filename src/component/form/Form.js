@@ -17,17 +17,9 @@ const Form = () => {
       }
 
       await datastore.todos.add(todoObject)
+      toast.success('Added')
       todoText.classList.remove('is-invalid')
       todoText.value = ''
-      toast('added',  {
-        position: 'top-right',
-        // autoClose: 5000,
-        // hideProgressBar: false,
-        // closeOnClick: true,
-        // pauseOnHover: true,
-        // draggable: true,
-        // progress: undefined,
-      })
     } else {
       todoText.classList.add('is-invalid')
     }
