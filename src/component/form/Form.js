@@ -17,6 +17,7 @@ const Form = () => {
 
       await datastore.todos.add(todoObject)
       todoText.classList.remove('is-invalid')
+      dispatch(todoActions.addToastInfo('Added successfully'))
       todoText.value = ''
     } else {
       todoText.classList.add('is-invalid')
