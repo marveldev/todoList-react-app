@@ -11,7 +11,7 @@ const App = () => {
   if (!allTodos) return null
 
   return (
-    <div className={`${theme} position-absolute w-100 h-auto font-monospace`}>
+    <div className={`${theme} position-absolute w-100 h-100 overflow-auto font-monospace`}>
       <h1 className="m-4 text-center">My TodoList</h1>
       <Form/>
       <TodoList
