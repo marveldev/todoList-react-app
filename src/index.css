@@ -61,6 +61,13 @@ button:active {
   background: #8ad1f8;
 }
 
+.toaster {
+  top: 1em;
+  right: 1em;
+  width: 15em;
+  border-radius: 0.3em;
+}
+
 @media screen and (max-width: 645px) {
   .form-wrapper {
     width: 95%;
@@ -77,5 +84,12 @@ button:active {
   .edit-modal,
   .delete-modal {
     width: 100%;
+  }
+
+  .toaster {
+    top: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
   }
 }

@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { todoActions } from '../redux/slice'
 import datastore from '../../dataStore'
+import Toaster from '../Toaster'
 
 const Form = () => {
   const dispatch = useDispatch()
@@ -25,6 +26,8 @@ const Form = () => {
 
   return (
     <div className="form-wrapper fw-bold m-auto">
+      <Toaster />
+
       <div className="d-flex gap-3">
         <label>
           Filter List:
