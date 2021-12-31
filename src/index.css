@@ -26,6 +26,14 @@
   flex: 0.6em;
 }
 
+.completed {
+  outline: 0.2em solid green;
+}
+
+.completed .todo-text {
+  text-decoration: line-through;
+}
+
 .list-group-item button {
   border: unset;
   width: 3em;

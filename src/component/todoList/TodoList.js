@@ -27,13 +27,11 @@ const TodoList = ({ allTodos }) => {
         {filteredItems && filteredItems.map(singleTodo => (
           <li
             key={singleTodo.id}
-            className="list-group-item d-flex align-items-center rounded-pill border border-success border-5"
+            className={`list-group-item d-flex align-items-center rounded-pill
+              ${singleTodo.status === 'completed' && 'completed'}`
+            }
           >
-            <span
-              className={`text-truncate fs-5 bg-white todo-text
-                ${singleTodo.status === 'completed' && 'text-decoration-line-through'}`
-              }
-            >
+            <span className='text-truncate fs-5 bg-white todo-text'>
               {singleTodo.todoText}
             </span>
 
@@ -56,7 +54,7 @@ const TodoList = ({ allTodos }) => {
               setDeleteModalIsOpen(true)
               setSelectedTodo(singleTodo)
             }}>
-              <img src={deleteIcon} className="bg-transparent" alt="delete" />
+              <img src={deleteIcon} className="h-75 bg-transparent" alt="delete" />
             </button>
           </li>
         ))}

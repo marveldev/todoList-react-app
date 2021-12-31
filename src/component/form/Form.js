@@ -42,7 +42,7 @@ const Form = () => {
         <label>
           Theme:
           <select
-            className="form-select shadow-sm"
+            className="form-select shadow-sm w-100"
             defaultValue="white"
           >
             <option value="light" className="bg-white">Light</option>
