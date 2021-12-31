@@ -1,8 +1,13 @@
+import { useDispatch } from 'react-redux'
 import datastore from '../../dataStore'
+import { todoActions } from '../redux/slice'
 
 const DeleteModal = ({ setDeleteModalIsOpen, selectedTodo }) => {
+  const dispatch = useDispatch()
+
   const deleteTodo = async () => {
     await datastore.todos.delete(selectedTodo.id)
+    dispatch(todoActions.addToastInfo('Deleted successfully'))
     setDeleteModalIsOpen(false)
   }
 

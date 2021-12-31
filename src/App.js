@@ -1,7 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useSelector } from 'react-redux'
 import datastore from './dataStore'
-import { Form, TodoList } from './component'
+import { Form, TodoList, Toaster } from './component'
 import './index.css'
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
       <TodoList
         allTodos={allTodos}
       />
+      <Toaster/>
     </div>
   )
 }
