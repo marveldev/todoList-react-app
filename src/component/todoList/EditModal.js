@@ -1,17 +1,14 @@
-import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import datastore from '../../dataStore'
-import { todoActions } from '../redux/slice'
 
 const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
-  const dispatch = useDispatch()
-
   const editTodo = async event => {
     event.preventDefault()
     const todoText = document.querySelector('#newTodoText')
 
     if (todoText.value.trim().length >= 1) {
       await datastore.todos.update(selectedTodo.id, {todoText: todoText.value})
-      dispatch(todoActions.addToastInfo('Updated successfully'))
+      toast('updated')
       setEditModalIsOpen(false)
     } else {
       todoText.classList.add('is-invalid')

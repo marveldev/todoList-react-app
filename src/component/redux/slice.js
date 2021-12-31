@@ -6,7 +6,7 @@ const todoSlice = createSlice(
     initialState: {
       filter : 'all',
       theme: localStorage.getItem('theme') || 'light',
-      toastInfo: ''
+      toastParam: {isOpen: false, message: ''}
     },
     reducers: {
       setFilterParam: (state, action) => {
@@ -16,8 +16,8 @@ const todoSlice = createSlice(
         state.theme = action.payload
         localStorage.setItem('theme', action.payload)
       },
-      addToastInfo: (state, action) => {
-        state.toastInfo = action.payload
+      setToastParam: (state, action) => {
+        state.toastParam = action.payload
       }
     }
   }

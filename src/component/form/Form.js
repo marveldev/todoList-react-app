@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 import { todoActions } from '../redux/slice'
 import datastore from '../../dataStore'
 
@@ -17,8 +18,16 @@ const Form = () => {
 
       await datastore.todos.add(todoObject)
       todoText.classList.remove('is-invalid')
-      dispatch(todoActions.addToastInfo('Added successfully'))
       todoText.value = ''
+      toast('added',  {
+        position: 'top-right',
+        // autoClose: 5000,
+        // hideProgressBar: false,
+        // closeOnClick: true,
+        // pauseOnHover: true,
+        // draggable: true,
+        // progress: undefined,
+      })
     } else {
       todoText.classList.add('is-invalid')
     }
