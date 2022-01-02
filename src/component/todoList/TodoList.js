@@ -3,16 +3,18 @@ import { useSelector } from 'react-redux'
 import EditModal from './EditModal'
 import DeleteModal from './DeleteModal'
 import datastore from '../../dataStore'
-import { editIcon, deleteIcon } from '../../assets'
+import { editIcon, deleteIcon, completeSound } from '../../assets'
 
 const TodoList = ({ allTodos }) => {
   const [selectedTodo, setSelectedTodo] = useState()
   const [editModalIsOpen, setEditModalIsOpen] = useState(false)
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false)
+  const audioElement = new Audio (completeSound)
 
   const markAsComplete = async selectedTodo => {
     const status = selectedTodo.status === 'completed' ? 'uncompleted' : 'completed'
     await datastore.todos.update(selectedTodo.id, {status})
+    selectedTodo.status === 'uncompleted' && await audioElement.play()
   }
 
   const filterParam = useSelector(state => state.todoParam.filter)
