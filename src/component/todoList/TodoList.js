@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import EditModal from './EditModal'
 import DeleteModal from './DeleteModal'
 import datastore from '../../dataStore'
-import { editIcon, deleteIcon, completeSound } from '../../assets'
+import { editIcon, deleteIcon, completeSound, checklist } from '../../assets'
 
 const TodoList = ({ allTodos }) => {
   const [selectedTodo, setSelectedTodo] = useState()
@@ -61,12 +61,21 @@ const TodoList = ({ allTodos }) => {
           </li>
         ))}
       </ul>
+
+      {filteredItems.length <= 0 && (
+        <div className="text-center">
+          <img src={checklist} alt="checklist" />
+          <p className="mt-2">Your list is empty!</p>
+        </div>
+      )}
+
       {editModalIsOpen &&
         <EditModal
           selectedTodo={selectedTodo}
           setEditModalIsOpen={setEditModalIsOpen}
         />
       }
+
       {deleteModalIsOpen &&
         <DeleteModal
           selectedTodo={selectedTodo}
