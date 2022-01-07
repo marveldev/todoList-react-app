@@ -7,6 +7,14 @@
   color: #fff;
 }
 
+.app-name {
+  font-size: 5em;
+}
+
+.start-button {
+  width: 15em;
+}
+
 .form-wrapper {
   width: 50%;
 }
@@ -69,6 +77,10 @@ button:active {
 }
 
 @media screen and (max-width: 645px) {
+  .app-name {
+    font-size: 3em;
+  }
+
   .form-wrapper {
     width: 95%;
   }
