@@ -37,13 +37,13 @@ const TodoList = ({ allTodos }) => {
               {singleTodo.todoText}
             </span>
 
-            <button onClick={() => markAsComplete(singleTodo)}>
+            <label className="me-3" onClick={() => markAsComplete(singleTodo)}>
               <input
-                className="form-check-input fs-3 border-3 mt-0"
+                className="form-check-input fs-2 border-3 mt-0"
                 type="checkbox"
                 defaultChecked={singleTodo.status === 'completed' && true}
               />
-            </button>
+            </label>
 
             <button onClick={() => {
               setEditModalIsOpen(true)

@@ -65,7 +65,7 @@ const Form = () => {
             aria-label="What do you want to do?"
           />
           <button
-            className="btn btn-primary rounded-end"
+            className="add-button rounded-end text-white"
             type="submit"
             aria-label="submit"
           >
