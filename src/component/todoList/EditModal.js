@@ -20,7 +20,7 @@ const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
       <div className="overlay" onClick={() => setEditModalIsOpen(false)}/>
       <div className="edit-modal rounded">
         <div className="modal-header bg-transparent">
-          <h5 className="modal-title bg-transparent text-white">My Todo</h5>
+          <h5 className="modal-title bg-transparent">My Todo</h5>
           <button
             type="button"
             className="btn-close"
@@ -41,7 +41,7 @@ const EditModal = ({ selectedTodo, setEditModalIsOpen }) => {
             defaultValue={selectedTodo.todoText}
           />
           <button
-            className="btn btn-secondary rounded-end"
+            className="btn btn-primary rounded-end"
             type="submit"
             aria-label="submit"
           >
